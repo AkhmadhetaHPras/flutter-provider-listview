@@ -7,6 +7,7 @@ class AddTaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController etInput = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tambah Task Baru"),
@@ -19,6 +20,7 @@ class AddTaskPage extends StatelessWidget {
               decoration: const InputDecoration(
                 hintText: "Masukkan Task Baru",
               ),
+              controller: etInput,
             ),
             const SizedBox(
               height: 50,
@@ -28,7 +30,7 @@ class AddTaskPage extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<Tasklist>().addNewTask();
+                      context.read<Tasklist>().addNewTask(etInput.text);
                       Navigator.pop(context);
                     },
                     child: const Text("Tambah Task Baru"),

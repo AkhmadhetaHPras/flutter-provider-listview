@@ -6,9 +6,9 @@ class Tasklist with ChangeNotifier {
 
   get taskList => _taskList;
 
-  void addNewTask() {
+  void addNewTask(String data) {
     _taskList.add(
-      Task(name: "Task Baru", status: false),
+      Task(name: data, status: false),
     );
     notifyListeners();
   }
