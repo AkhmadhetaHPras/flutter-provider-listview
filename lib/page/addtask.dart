@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:provider_listview/service/tasklist.dart';
+import 'package:provider_listview/components/add_task_button.dart';
+import 'package:provider_listview/components/input_task.dart';
 
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
@@ -16,25 +16,14 @@ class AddTaskPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Masukkan Task Baru",
-              ),
-              controller: etInput,
-            ),
+            InputTask(etInput: etInput),
             const SizedBox(
               height: 50,
             ),
             Row(
               children: [
                 Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.read<Tasklist>().addNewTask(etInput.text);
-                      Navigator.pop(context);
-                    },
-                    child: const Text("Tambah Task Baru"),
-                  ),
+                  child: AddTaskButton(etInput: etInput),
                 ),
               ],
             )
